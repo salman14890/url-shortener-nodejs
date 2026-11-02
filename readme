@@ -1,0 +1,42 @@
+# URL Shortener
+
+Shortens a long URL, stores it in DynamoDB, and redirects visitors to the original address.
+
+## Requirements
+
+- Node.js 18 or newer
+- An AWS account
+- A DynamoDB table in the same region as `AWS_REGION`
+
+Create the table with partition key `code` (String). The default table name is `urls`.
+
+## Setup
+
+```bash
+git clone https://github.com/salman14890/url-shortener-nodejs.git
+cd url-shortener
+npm install
+cp .env-example .env
+
+Edit .env and set your own values:
+
+AWS_REGION=eu-west-1
+AWS_ACCESS_KEY_ID=your-aws-access-key
+AWS_SECRET_ACCESS_KEY=your-aws-secret-key
+PORT=3000
+DYNAMODB_TABLE=urls
+
+RUN
+
+npm run dev
+
+Open http://localhost:3000.
+
+npm start runs the app once. npm run dev restarts it when you change a file.
+
+API
+POST /short-url with JSON { "url": "https://example.com" } returns a short code.
+
+GET /:code redirects to the original URL and increments the click count.
+
+GET /stats/:code returns the stored item.
