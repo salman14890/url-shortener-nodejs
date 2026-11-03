@@ -40,3 +40,13 @@ POST /short-url with JSON { "url": "https://example.com" } returns a short code.
 GET /:code redirects to the original URL and increments the click count.
 
 GET /stats/:code returns the stored item.
+
+RUN with Docker
+
+docker build -t url-shortener .
+docker run -d --name url-shortener --env-file .env -p 3000:3000 url-shortener
+
+RUN with docker compose
+docker compose build
+docker compose up -d
+
