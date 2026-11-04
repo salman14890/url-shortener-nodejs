@@ -22,6 +22,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             echo "Connected to SSH Server"
-            cd "$HOME/url-shortner-nodejs"
+            cd "$HOME/url-shortener-nodejs"
             git pull
             docker compose up -d --build
