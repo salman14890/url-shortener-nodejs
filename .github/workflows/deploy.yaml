@@ -20,6 +20,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
+          envs: AWS_REGION,AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,DYNAMODB_TABLE
           script: |
             echo "Connected to SSH Server"
             cd "$HOME/url-shortener-nodejs"
